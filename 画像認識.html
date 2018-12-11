@@ -20,44 +20,32 @@
 <body BGCOLOR="#ffffff">
   <!--processingのプログラミングとcanvasを設置-->
   <script type="application/processing">
-
   void setup(){
     size(innerWidth, 300);
     background(255);
     noFill( );
   }
 
-
   void draw(){
   for (int i = 0; i < 10; i++){
     for (int p = 0; p < 10; p++){
-
         float x=random(50,5000);
         float y=random(50,5000);
         float d=random(5,500);
         colorMode(HSB,100);
         stroke(i*10,p*5,100);
         ellipse(x, y, d, d);
-
-
      }
     }
    }
-
   </script>
   <canvas id="canvas"></canvas>
-
 
   <header>
     <h1>画像認識の練習</h1>
     <input type="button" value="いいね" onclick="show_msg('いいねしてくれてありがとう！');">
     <marquee scrollamount="8", style="color:#8b0000;">ご質問・ご要望はこちらへ　zyouhoukiso-kadai@gmail.uso</marquee>
   </header>
-
-
-
-
-
   <article>
      <!--ブロックの文章枠-->
     　<div class="box1">
@@ -65,6 +53,9 @@
         <h4>Processing でやれたら嬉しいね</h4>
         <h4>いつ提出なのかにもよるね</h4>
   　  </div>
+
+
+
 
 
     <h1>↓↓↓↓↓</h1>
@@ -78,6 +69,10 @@
     </figure>
 
   </article>
+
+
+
+
 
   <footer>
       <p>問い合わせ: <a href="help2.html">ヘルプ</a></p>
