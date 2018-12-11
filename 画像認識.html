@@ -61,8 +61,8 @@
     <h1>↓↓↓↓↓</h1>
     <figure>
           <h1>TensorFlow.js:ImageNet Classification</h1>
-          <p><input type="file"></p>
-          <p><input button onclick="onfileSlelected(this)">Load</p>
+          <p><input type="file" id='input_file'></p>
+          <p><input type="button" value="load" onclick="onFileSelected()">Load</p>
           <p><canvas id="test_canvas" width=256 height=256></canvas></p>
           <p><button onclick="predict();">Predict</button></p>
           <p id='result'>Result</p>

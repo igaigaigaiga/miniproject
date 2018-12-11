@@ -111,7 +111,16 @@ function your_syozoku(){
 function onFileLoaded(e){
   var src_data = e.target.result;
   img.onload = onImageSetted;
-  ing.scr = scr_date;
+  img.src = src_data;
+}
+
+var img = new Image();
+
+function onFileSelected(){
+  var file = document.getElementById('input_file').files[0];
+  var reader = new FileReader();
+  reader.onload = onFileLoaded;
+  reader.readAsDataURL(file);
 }
 
 function onImageSetted(e){
@@ -128,6 +137,6 @@ function createImageData(img){
   cv.height = img.naturalHeight;
   var ct = cv.getContext('2d');
   ct.drawImage(img, 0, 0);
-  var data = ct.getImageData(0, 0, cv.width, cv,height);
+  var data = ct.getImageData(0, 0, cv.width, cv.height);
   return data;
 }
