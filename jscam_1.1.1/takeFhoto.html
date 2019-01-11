@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>「crocro.jscam」 - サンプル シンプル - クロノス・クラウン</title>
+    <script
+        type="text/javascript"
+        src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"
+    ></script>
+    <script type="text/javascript" src="jscam.js"></script>
+    <script language="javascript">
+        var cap;
+        $(document).ready(function() {
+            // JSカメラ初期化
+            crocro.jscam.initSwfCam();
+            crocro.jscam.setFilter(["bin", "label", "hidePaint"]);
+            cap = crocro.jscam.makeCaptureObject("cnvsCap");
+
+            // コールバックの設定
+            cap.setBackDataType(["pixelSwf", "labelData"]);
+            cap.setExtrFnc(function(resObj){    // 各戻り値ごとの処理
+                var resArr = [];
+                if ("labelData" in resObj) {
+                    var ld = resObj.labelData;
+                    resArr.push("labelData.length : " + ld.length);
+                    for (var i = 0; i < ld.length; i ++) {
+                        var s = "";
+                        $.each(ld[i], function(k, v) {s += k + ":" + v + ", "});
+                        resArr.push("labelData[" + i + "] : " + s);
+                    }
+                }
+                $("#resData").html(resArr.join("<br>"));
+            })
+        });
+
+        // キャプチャ
+        function captureImg() {
+            cap.capture();        // キャプチャ
+        }
+    </script>
+</head>
+<body bgcolor="#ffffff">
+
+    <div class="boxOut">
+        <script language="javascript">
+            crocro.jscam.write();
+        </script>
+        <br>
+        <input type="button" onClick="captureImg()" value="キャプチャ">
+        <br>
+        <canvas id="cnvsCap" width="320" height="240"></canvas>
+        <div id="resData"></div>
+    </div>
+
+</body>
+</html>
