@@ -168,3 +168,28 @@ async function predict(){
   pred_name = classes[pred_idx[0]];
   document.getElementById('result').innerHTML = 'Prediction* ' + pred_name;
 }
+
+
+async function detect() {
+    var img_data = createImageData(img);
+    cocoSsd.load().then(model => {
+      model.detect(img_data).then(result => {
+        const cv = document.getElementById('canvas');
+        const ctx = cv.getContext('2d');
+        ctx.font = '10px Arial';
+
+        for (let i = 0; i < result.length; i++) {
+          ctx.beginPath();
+          ctx.rect(...result[i].bbox);
+          ctx.lineWidth = 1;
+          ctx.strokeStyle = 'green';
+          ctx.fillStyle = 'green';
+          ctx.stroke();
+          ctx.fillText(
+              result[i].score.toFixed(3) + ' ' + result[i].class,
+              result[i].bbox[0],
+              result[i].bbox[1] > 10 ? result[i].bbox[1] - 5 : 10);
+        }
+      });
+    });
+}
