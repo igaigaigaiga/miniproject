@@ -1,0 +1,63 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8"/>
+  <title>画像認識</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@0.14.1/dist/tf.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/coco-ssd"></script>
+  <script src="index.js"></script>
+
+  <meta http-equiv="Content-Type" content="text/html; charset=shift_jis">
+  <link rel="stylesheet" type="text/css" href="Final.css" />
+
+
+</head>
+<body BGCOLOR="#ffffff">
+  <!--processingのプログラミングとcanvasを設置-->
+  <script type="application/processing">
+  void setup(){
+    size(innerWidth, 300);
+    background(255);
+    noFill( );
+  }
+  void draw(){
+  for (int i = 0; i < 10; i++){
+    for (int p = 0; p < 10; p++){
+        float x=random(50,5000);
+        float y=random(50,5000);
+        float d=random(5,500);
+        colorMode(HSB,100);
+        stroke(i*10,p*5,100);
+        ellipse(x, y, d, d);
+     }
+    }
+   }
+  </script>
+  <canvas id="canvas"></canvas>
+
+  <header>
+    <h1>画像認識の練習</h1>
+    <marquee scrollamount="8", style="color:#8b0000;">ご質問・ご要望はこちらへ　zyouhoukiso-kadai@gmail.uso</marquee>
+  </header>
+  <article>
+    　<div class="box1">
+        <h2>画像認識の練習だよ</h2></div>
+
+
+    <h1>↓↓↓↓↓</h1>
+    <figure>
+          <h1>TensorFlow.js:ImageNet Classification</h1>
+          <p><input type="file" id='input_file'></p>
+          <p><input type="button" value="load" onclick="onFileSelected()">Load</p>
+          <p><canvas id="test_canvas" width=256 height=256 style="border: 1px solid;"></canvas></p>
+          <p><input type="button" value="Detect" onclick='detect()'>Detect</p>
+          <p id='result'>Predect...</p>
+    </figure>
+
+  </article>
+
+</body>
+
+
+
+</html>
