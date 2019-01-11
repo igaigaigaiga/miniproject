@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+
+
+
+<head>
+  <meta charset="UTF-8"/>
+  <title>名刺自動作成</title>
+  <script src="Final.js"></script>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift_jis">
+  <link rel="stylesheet" type="text/css" href="Final.css" />
+
+  <!--プロセシングのhtmlへのパス-->
+  <meta http-equiv="Content-Type" content="text/html;  charset=shift_jis">
+  <title>Processing.jsでweb表示するサンプルhtml</title>
+
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1">
+  <script src="processing.min.js"></script>
+
+
+</head>
+
+
+
+
+
+
+<body BGCOLOR="#ffffff">
+  <!--processingのプログラミングとcanvasを設置-->
+  <script type="application/processing">
+
+  void setup(){
+    size(innerWidth, 300);
+    background(255);
+    noFill( );
+  }
+
+
+  void draw(){
+  for (int i = 0; i < 10; i++){
+    for (int p = 0; p < 10; p++){
+
+        float x=random(50,5000);
+        float y=random(50,5000);
+        float d=random(5,500);
+        colorMode(HSB,100);
+        stroke(i*10,p*5,100);
+        ellipse(x, y, d, d);
+
+
+     }
+    }
+   }
+
+  </script>
+  <canvas id="canvas"></canvas>
+
+
+  <header>
+    <h1>名刺自動作成　RAKU-PR</h1>
+    <input type="button" value="いいね" onclick="show_msg('いいねしてくれてありがとう！');">
+    <marquee scrollamount="8", style="color:#8b0000;">ご質問・ご要望はこちらへ　zyouhoukiso-kadai@gmail.uso</marquee>
+  </header>
+
+
+
+  <article>
+     <!--ブロックの文章枠-->
+    　<div class="box1">
+        <h2>文字</h2>
+        <h4>文字</h4>
+        <h4>文字</h4>
+  　  </div>
+
+    <figure>
+
+    </figure>
+
+  </article>
+
+  <br>
+  <br>
+  <br>
+
+  <footer>
+      <p>問い合わせ: <a href="help2.html">ヘルプ</a></p>
+  </footer>
+
+  <!--processingのプログラミングとcanvasを設置2-->
+  <script type="application/processing">
+
+  void setup(){
+    size(innerWidth, 300);
+    background(255);
+    noFill();
+  }
+
+
+  void draw(){
+  for (int i = 0; i < 10; i++){
+    for (int p = 0; p < 10; p++){
+
+        float x=random(50,5000);
+        float y=random(50,5000);
+        float d=random(5,500);
+        colorMode(HSB,100);
+        stroke(i*10,p*5,100);
+        ellipse(x, y, d, d);
+
+     }
+    }
+   }
+
+  </script>
+  <canvas id="canvas"></canvas>
+
+</body>
+
+
+
+</html>
