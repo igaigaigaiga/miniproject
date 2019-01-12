@@ -69,6 +69,9 @@ async function detect() {
     });
 }
 
+function person_check(){
+  location.href = 'https://www.sejuku.net/blog/';
+}
 // function show_msg(msg){
 //   alert(msg);
 // }
@@ -185,7 +188,7 @@ async function detect() {
 //   img.src = src_data;
 // }
 //
-// 
+//
 // var img = new Image();
 //
 // function onFileSelected(){
