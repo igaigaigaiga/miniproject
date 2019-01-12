@@ -6,7 +6,10 @@
   <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@0.14.1/dist/tf.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/coco-ssd"></script>
   <script src="faceCheck.js"></script>
-
+   <!-- <script type="text/javascript" src="js_lib/jscam.js"></script>
+   <script language="javascript">
+       crocro.jscam.write({dir: "js_lib/"});
+   </script> -->
   <meta http-equiv="Content-Type" content="text/html; charset=shift_jis">
   <link rel="stylesheet" type="text/css" href="Final.css" />
 
@@ -29,7 +32,27 @@
           <p><input type="button" value="判定" onclick='detect()'></p>
     </figure>
 
+    <!-- <figure>
+      <script language="javascript">
+      crocro.jscam.write();
+      </script>
+      <input type="button" onClick="captureImg()" value="キャプチャ">
+      <br>
+      <canvas id="cnvsCap" width="320" height="240"></canvas>
+      <div id="resData"></div>
+    </figure> -->
+
   </article>
+
+  <div class="camera">
+    <video id="video">Video stream not available.</video>
+    <button id="startbutton">Take photo</button>
+  </div>
+  <canvas id="canvas">
+    </canvas>
+    <div class="output">
+      <img id="photo" alt="The screen capture will appear in this box.">
+    </div>
 
      <input type="button" value=" ここをクリックしてHPへ移動しよう！ " onclick="person_check();" />
 
