@@ -42,6 +42,8 @@ function createImageData(img){
   return data;
 }
 
+var person = 0;
+
 async function detect() {
     var img_data = createImageData(img);
     cocoSsd.load().then(model => {
@@ -64,14 +66,41 @@ async function detect() {
               result[i].score.toFixed(3) + ' ' + result[i].class,
               result[i].bbox[0],
               result[i].bbox[1] > 10 ? result[i].bbox[1] - 5 : 10);
+          if (result[i].class == "person"){
+            alert("person")
+            person = 1;
+          }else{
+            alert("other")
+            person = 2;
+          }
         }
+
       });
     });
+
 }
 
 function person_check(){
-  location.href = 'https://www.sejuku.net/blog/';
+  if (person == 1){
+    window.location.href = 'Homepage.html';
+  }else if (person == 2){
+    alert("あなたは人間ではありません")
+  }else{
+    alert("写真を判定してください。")
+  }
 }
+
+
+ple.jsJavaScript
+function changeVisible(){
+  var str = document.getElementById("target");
+  if(str.style.visibility == "visible"){
+    str.style.visibility = "hidden";
+  }else{
+    str.style.visibility = "visible";
+  }
+}
+
 // function show_msg(msg){
 //   alert(msg);
 // }

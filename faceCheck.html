@@ -2,10 +2,10 @@
 <html>
 <head>
   <meta charset="UTF-8"/>
-  <title>画像認識</title>
+  <title>faceCheck</title>
   <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@0.14.1/dist/tf.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/coco-ssd"></script>
-  <script src="faceCeck.js"></script>
+  <script src="faceCheck.js"></script>
 
   <meta http-equiv="Content-Type" content="text/html; charset=shift_jis">
   <link rel="stylesheet" type="text/css" href="Final.css" />
@@ -14,27 +14,26 @@
 </head>
 <body BGCOLOR="#ffffff">
   <header>
-    <h1>画像認識の練習</h1>
-    <marquee scrollamount="8", style="color:#8b0000;">ご質問・ご要望はこちらへ　zyouhoukiso-kadai@gmail.uso</marquee>
+    <h1>あなたがこのHPの閲覧可能者か確認します。</h1>
   </header>
   <article>
     　<div class="box1">
-        <h2>画像認識の練習だよ</h2></div>
+        <h2>写真を判定します</h2>
+        <h1>↓↓↓↓↓</h1>
+      </div>
 
-
-    <h1>↓↓↓↓↓</h1>
     <figure>
-          <h1>TensorFlow.js:ImageNet Classification</h1>
           <p><input type="file" id='input_file'></p>
           <p><input type="button" value="load" onclick="onFileSelected()">Load</p>
           <p><canvas id="test_canvas" width=256 height=256 style="border: 1px solid;"></canvas></p>
-          <p><input type="button" value="Detect" onclick='detect()'>Detect</p>
-          <p id='result'>Predect...</p>
+          <p><input type="button" value="判定" onclick='detect()'></p>
     </figure>
 
   </article>
 
-      <input type="button" value="ここをクリックしてHPへ移動しよう！" onclick="person_check();">
+     <input type="button" value=" ここをクリックしてHPへ移動しよう！ " onclick="person_check();" />
+
+<p id="msg"></p>
 
 </body>
 
