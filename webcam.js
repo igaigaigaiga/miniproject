@@ -31,16 +31,15 @@ function getImageData() {
 }
 function login() {
 take_photo().then(()=> {
-  find_person().then(person_flag => {
+  find_target().then(person_flag => {
     verify_person(person_flag);
   });
 });
 }
-
 function search_person(result) {
 let person_flag = false;
 for (let i = 0; i < result.length; i++) {
-  if (result[i].class == "person"){
+  if (result[i].class == random_target){
     person_flag = true;
   }
 }
@@ -53,17 +52,17 @@ return new Promise(function(resolve){
     console.log("model loaded");
     model.detect(img_data).then(result => {
       console.log("predicted",result);
-      const targert_found_flag = search_person(result);
+      const target_found_flag = search_person(result);
       resolve(target_found_flag);
     });
   });
 });
 }
- function verify_person(person_flag){
-   if (person_flag){
-     alert("あなたは人間です")
-     window.location.href = 'Homepage.html';
-  }else{
-    alert("あなたは人間ではありません")
-  }
+function verify_person(person_flag){
+    if (person_flag){
+      alert("正解！ホームページに移行します！");
+      window.location.href = 'Homepage.html';
+    }else{
+      alert("これは"+ random_target +"ではありません");
+    }
 }

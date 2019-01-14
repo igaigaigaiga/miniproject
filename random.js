@@ -2,6 +2,20 @@ const target = ['person','umbrella','handbag','backpack','bottle','cup','laptop'
 const target2 = ['person','cup','book'];
 var random_target = target2[Math.floor(Math.random()*target2.length)];
 console.log(random_target);
-function get_random_target(){
-  alert(random_target + "を１０秒以内に探せ！");
+
+var count = 5;
+var countup = function(){
+  if(count > 0){
+    console.log(count--);
+    set_HTML("countdown", count +　"秒以内にログインをしない場合、ターゲットが変更します！");
+  }else{
+    count = 5;
+    location.reload();
+  }
+
 }
+var id = setInterval(function(){
+  countup();
+  if(count < 0){　
+    clearInterval(id);
+  }}, 1000);

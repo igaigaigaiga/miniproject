@@ -17,11 +17,8 @@ function timer(){
     alert("時間切れです！もう一度ロードして挑戦してください！！");
   }
   }
-
-
 }
 
 function set_HTML(id, msg){
   document.getElementById(id).innerHTML = msg;
-
 }
