@@ -3,13 +3,12 @@ const target2 = ['person','cup','book'];
 var random_target = target2[Math.floor(Math.random()*target2.length)];
 console.log(random_target);
 
-var count = 5;
+var count = 30;
 var countup = function(){
   if(count > 0){
     console.log(count--);
     set_HTML("countdown", count +　"秒以内にログインをしない場合、ターゲットが変更します！");
   }else{
-    count = 5;
     location.reload();
   }
 
