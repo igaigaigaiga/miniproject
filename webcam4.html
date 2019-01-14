@@ -6,15 +6,22 @@
  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@0.14.1/dist/tf.min.js"></script>
  <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/coco-ssd"></script>
  <script src="random.js"></script>
+   <link rel="stylesheet" type="text/css" href="webcam.css" />
 </head>
 
 <body>
-  <p id=target_id></p>
-  <p id=countdown>30秒以内にログインをしない場合、ターゲットが変更します！</p>
-  <button onclick="login()">login</button>
-  <br />
+  <div><h1>Grial ログインページ</h1></div>
+  <div class="box1">
+  <div><h2 id=target_id></h2></div>
+  <div><h2>②ターゲットを準備したら、loginボタンを押してターゲット認証をしてください。</h2></div>
+  <div><h3 id=countdown>30秒以内にログインをしない場合、ターゲットが変更します！</h3></div>
+  <div><a href="#" class="btn" onclick="login()">login</a></div>
+  <h4></h4>
+  </div>
   <video id="local_video" autoplay style="width: 640px; height: 480px; border: 1px solid black;" hidden></video>
-  <canvas id="photo" width="320px" height="240px"></canvas>
+  <div><div class="box2">
+  <canvas id="photo" width="320px" height="240px"></canvas></div>
+  </div>
 </body>
 
 <script type="text/javascript">
@@ -87,7 +94,7 @@ function verify_person(person_flag){
     }
 }
 window.onload = function(){
-　set_HTML("target_id","ログインの前に" + random_target +　"を準備してください！");
+　set_HTML("target_id","①ターゲット「" + random_target +　"」を準備してください！");
 }
 function set_HTML(id, msg){
   document.getElementById(id).innerHTML = msg;
