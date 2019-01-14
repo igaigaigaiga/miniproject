@@ -1,27 +1,73 @@
-h1{
-    padding: 6px 12px;
-    color: #ff69b4;
-    font-size: 40px
+h1:first-letter{
+    color:#87befd;
+    font-size: 80px;
 }
-
+h1 {
+    color:black;
+    font-size: 40px;
+    letter-spacing:20px;
+}
 h2 {
     padding: 3px 6px;
     color: #8b0000;
 }
-
+h3 {
+  color: #8b0000;
+}
 h4 {
-    color: #8b0000;
-
+  color: #8b0000;
+}
+div { text-align : center ; }
+.btn{
+    display: inline-block;
+    text-decoration: none;
+    background: #87befd;
+    color: #FFF;
+    width: 120px;
+    height: 120px;
+    line-height: 120px;
+    border-radius: 50%;
+    text-align: center;
+    vertical-align: middle;
+    overflow: hidden;
+    box-shadow: 0px 0px 0px 5px #87befd;
+    border: dashed 1px #FFF;
+    transition: .4s;
+}
+.btn:hover{
+    background: #668ad8;
+     box-shadow: 0px 0px 0px 5px #668ad8;
 }
 
+.box3{
+    padding: 0.2em 0.5em;
+    margin: 2em 0;
+    background: #eaffff;
+    box-shadow: 0px 0px 0px 10px #eaffff;
+    border: dashed 2px brown;
+}
+.box2{
+    padding: 0.2em 0.5em;
+    margin: 2em 0;
+    background: #ccffff;
+    box-shadow: 0px 0px 0px 10px #ccffff;
+    border: dashed 2px brown;
+}
 .box1{
     padding: 0.2em 0.5em;
     margin: 2em 0;
-    background: #ffc0cb;
-    box-shadow: 0px 0px 0px 20px #ffc0cb;
-    border: dashed 2px white;
+    background: #9effff;
+    box-shadow: 0px 0px 0px 10px #9effff;
+    border: dashed 2px brown;
 }
-.box1 p {
+
+.box0{
+    padding: 0.5em 1em;
+    margin: 2em 0;
+    background: -webkit-repeating-linear-gradient(-45deg, #f0f8ff, #f0f8ff 3px,#e9f4ff 3px, #e9f4ff 7px);
+    background: repeating-linear-gradient(-45deg, #f0f8ff, #f0f8ff 3px,#e9f4ff 3px, #e9f4ff 7px);
+}
+.box0 p {
     margin: 0;
     padding: 0;
 }

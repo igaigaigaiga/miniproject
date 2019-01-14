@@ -1,283 +1,232 @@
 <!DOCTYPE html>
 <html>
-
-
-
 <head>
   <meta charset="UTF-8"/>
   <title>NPO法人Glial</title>
   <script src="Homepage.js"></script>
   <meta http-equiv="Content-Type" content="text/html; charset=shift_jis">
   <link rel="stylesheet" type="text/css" href="Homepage.css" />
-
   <!--プロセシングのhtmlへのパス-->
   <meta http-equiv="Content-Type" content="text/html;  charset=shift_jis">
   <title>Processing.jsでweb表示するサンプルhtml</title>
-
   <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1">
   <script src="processing.min.js"></script>
-
-
 </head>
-
-
-
-
-
-
 <body BGCOLOR="#ffffff">
   <!--processingのプログラミングとcanvasを設置-->
   <script type="application/processing">
-
-
     void setup(){
       size(innerWidth, 300);
       background(255);
       noFill();
     }
-
-
     void draw(){
     for (int i = 0; i < 10; i++){
       for (int p = 0; p < 10; p++){
-
           float x=random(50,5000);
           float y=random(50,5000);
           float d=random(5,500);
-          colorMode(HSB,100);
-          stroke(i*10,p*5,100);
+          float color_g=random(191,255);
+          stroke(127,color_g,255);
+          // colorMode(HSB,100);
+          // stroke(i*10,p*5,100);
           ellipse(x, y, d, d);
-
        }
       }
      }
-
-
-  float time = 0, elapsedTime = 0, timeStamp = 0;
-  int state = 0;
-  float start = 5.0, push = 5.0;
-  PFont f;
-  float cr1 = 0, cg1 = 0, cb1 = 0;
-  float cr2 = 0, cg2 = 0, cb2 = 0;
-  float cr3 = 0, cg3 = 0, cb3 = 0;
-
-  void setup() {
-      size(800, 800);
-      f = createFont("Dialog.plain", 20);
-      textFont(f);
-      textAlign(CENTER, TOP);
-      state = 0;
-      background(255);
-  }
-
-  void draw() {
-      elapsedTime = float(millis()) / 1000;
-      time = elapsedTime - timeStamp;
-      fill(0);
-      background(255);
-      switch (state) {
-      case 0:
-        text( "パスワード認証開始まで" + int(start - time + 1), width / 2, 100);
-
-        if (time >= start) {
-          state = 1;
-          timeStamp = elapsedTime;
-          time = elapsedTime - timeStamp;
-        }
-        break;
-
-
-
-      case 1:
-        circle(50,250,150,0,50,200,2);
-        break;
-
-
-      case 2:
-        circle(50,50,150,250,0,100,3);
-        break;
-
-
-      case 3:
-        circle(50,50,0,0,100,100,4);
-        break;
-
-
-      case 4:
-       for (int i = 0; i < 100; i++){
-         float x = random(0,266);
-         float y = random(200,800);
-         float r = random(10,200);
-
-         noFill();
-         stroke(cr1,cg1,cb1);
-         ellipse(x, y, r, r);
-         stroke(cr2,cg2,cb2);
-         ellipse(x + 266, y, r, r);
-         stroke(cr3,cg3,cb3);
-         ellipse(x + 532, y, r, r);
-         stroke(cr1,cg1,cb1);
-
-
-       }
-
-        text("ログインは成功しました。下にスクロールしてください。", width / 2, 20);
-        text("もう一度挑戦する場合はEnterキーを押してください", width / 2, 80);
-        break;
-    }
-  }
-
-
-
-  void circle(int r1, int g1, int b1, int r2, int g2, int b2,int n){
-    background(255);
-    for (int i = 0; i < 100; i++){
-        float x = random(0,400);
-        float y = random(100,800);
-        noFill();
-
-        stroke(r1, g1, b1);
-          if(mouseX<400){
-            ellipse(x, y, 100, 100);
-          }else{
-            ellipse(x, y, 20, 20);
-          }
-
-        stroke(r2, g2, b2);
-          if(mouseX>400){
-            ellipse(x + 400, y, 100, 100);
-          }else{
-            ellipse(x + 400, y, 20, 20);
-          }
-    }
-
-    text("ログインに設定した色をクリックしてください。残り" + int(push - time + 1)  + "秒", width / 2, 20);
-
-    if (time >= push) {
-      state = n;
-      timeStamp = elapsedTime;
-      time = elapsedTime - timeStamp;
-    }
-  }
-
-
-
-  void mouseReleased() {
-      float d = random(50,150);
-      if (mouseX < 400 && state == 1) {
-        cr1=50;
-        cg1=250;
-        cb1=150;
-      }else if(mouseX > 400 && state == 1){
-        cr1=0;
-        cg1=50;
-        cb1=200;
-      }
-
-      if (mouseX < 400 && state == 2) {
-        cr2=50;
-        cg2=50;
-        cb2=150;
-      }else if(mouseX > 400 && state == 2){
-        cr2=250;
-        cg2=0;
-        cb2=100;
-      }
-
-      if (mouseX < 400 && state == 3) {
-        cr3=50;
-        cg3=50;
-        cb3=0;
-      }else if(mouseX > 400 && state == 3){
-        cr3=0;
-        cg3=100;
-        cb3=100;
-      }
-  }
-
-
-
-  void keyPressed() {
-      if (key == ENTER && state == 4) {
-          state = 0;
-          timeStamp = elapsedTime;
-          time = elapsedTime - timeStamp;
-          cr1 = 0;
-          cg1 = 0;
-          cb1 = 0;
-          cr2 = 0;
-          cg2 = 0;
-          cb2 = 0;
-          cr3 = 0;
-          cg3 = 0;
-          cb3 = 0;
-
-      }
-  }
   </script>
   <canvas id="canvas"></canvas>
-
 
   <header>
-    <h1>題名</h1>
-    <input type="button" value="いいね" onclick="show_msg('いいねしてくれてありがとう！');">
+    <h1>Grial</h1>
+    <p><a href="help2.html">ご相談はこちらから！</a></p>
     <marquee scrollamount="8", style="color:#8b0000;">ご質問・ご要望はこちらへ　zyouhoukiso-kadai@gmail.uso</marquee>
-  </header>
-
-
-
-  <article>
-     <!--ブロックの文章枠-->
-    　<div class="box1">
-        <h2>文字</h2>
-        <h4>文字</h4>
-        <h4>文字</h4>
-  　  </div>
+    <h4>
+      <br>心理学？精神病を直すための治療法とか？難しそうだよね。と思っている方、多いのではないでしょうか。
+      でも心理学って実は、普段の生活にたくさん隠れているものなんです。
+      <br>私たちNPO団体Grialはカウンセラーの知識をもとに、心理学をより皆さんの身近に役立ててもらえるセミナーやワークショップを開催しています！</br>
+    </h4>
+    <div class="box0">
+      <h3>講師　　吉田昌平（上智大学心理学科 卒、ポジティブ心理カウンセラー）</h3>
+      <p>離婚寸前の両親という家庭環境に育ちながらも、両親に「ありがとう」と伝え始めた事をきっかけに、家族仲が大きく改善。
+        "感謝"ひとつで自身も周囲も変化したことから、「どうしてこれを学校で教えないんだろう？」とポジティブ心理学の必要性を感じるように。
+        親、学生向けにポジティブ心理カウンセリングを行いながら、
+        上智新入生への「プレソフィアン」の企画・運営、250人規模の学生団体や地方からの講演依頼など、学生の教育に熱を注いでいる。</p>
+      </div>
+    </header>
+<article>
+      <div class="box3">
+          <h2>週末プチカウンセリングの会</h2>
+          <h3>1/20(日) 14:00-16:00　　e-space 早稲田店</h3>
+          <h4>
+            <p>「よくストレスを感じる。」「人間関係がうまくいかない…」「悩みを打ち明けづらい」「友人が悩んでいて力になりたい！」という人におすすめ！</p>
+            <p>今回はワークに特化し、より実践重視となっております！！</p>
+            <p>認知行動療法とは？/認知行動療法をするとどんな効果があるの❓/ワーク(参加者同士で実践し合う❗️)など盛りだくさん！</p></h4>
+    　</div>
+    　<div class="box2">
+        <h2>睡眠の心理学</h2>
+        <h3>12/9(日) 16:00-18:00 e-space 早稲田店</h3>
+        <h4>
+          <p>「最近、寝つきが悪い😰」「なんか毎日だるい…やる気が起こらない☹️」「勉強の効率を上げたい✏️」悪夢を見ないようにしたい！」など…</p>
+          <p>日々の生活で感じる「ネガティブ」なこと、睡眠で解消しませんか❓😊</p>
+          <p>睡眠について詳しくなるだけでなく、ワーク中心の、” 実際に変わることができる ”場を提供したいと思っています</p>
+          <p>寝る前に30分、39℃以上のお湯に浸かると寝つきが良くなる/いびきの有無が学習成績に影響する⁉️</p>
+          <p>1週間に3回、30分昼寝をすると、心臓病での死亡率が37%低下する/見る夢によって、目標の達成可能性が3倍に⁉️</p>
+          <p>心理学で証明されている睡眠に関する内容を、ワークも加えてお伝えします</p></h4>
+      </div>
+      <div class="box1">
+        <h2>ポジティブ心理カウンセリング</h2>
+        <h3>所要時間は変動 • 50分 学生 初回500円 2回目以降1000円</h3>
+        <h4>
+          <p>・うつ病レベルから、キャリア形成、起業コンサルなどまでの相談承りと、解決いたします</p>
+          <p>→認知行動療法 マインドフルネス療法 ポジティブ心理カウンセリング等が利用可能です。</p>
+          <p>・基本的な心理学の講義</p>
+          <p>(社会心理学 生理心理学 発達心理学 臨床心理学 認知心理学 ポジティブ心理学 教育心理学 )</p>
+          <p>・応用心理学の講義 (プレゼン セールス マネジメント マーケティング コミュニケーション セルフマネジメント 空間コンサル等)</p>
+          <p>カウンセリングからコーチング、コンサルまで、大抵可能。</p></h4>
+　        </div>
 
     <figure>
-
+      <!-- <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FGlial-446335995785320%2F%3Ftn-str%3Dk*F&tabs=timeline&width=500&height=500&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=false&appId" width="500" height="500" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe> -->
     </figure>
-
   </article>
-
-  <br>
-  <br>
-  <br>
-
-  <footer>
-      <p>問い合わせ: <a href="help2.html">ヘルプ</a></p>
-  </footer>
-
   <!--processingのプログラミングとcanvasを設置2-->
   <script type="application/processing">
+     float time = 0, elapsedTime = 0, timeStamp = 0;
+     int state = 0;
+     float start = 5.0, push = 5.0;
+     PFont f;
+     float cr1 = 255, cg1 = 127, cb1 = 255;
+     float cr2 = 127, cg2 = 255, cb2 = 127;
+     float cr3 = 255, cg3 = 255, cb3 = 127;
 
-  void setup(){
-    size(innerWidth, 300);
-    background(255);
-    noFill();
-  }
-
-
-  void draw(){
-  for (int i = 0; i < 10; i++){
-    for (int p = 0; p < 10; p++){
-
-        float x=random(50,5000);
-        float y=random(50,5000);
-        float d=random(5,500);
-        colorMode(HSB,100);
-        stroke(i*10,p*5,100);
-        ellipse(x, y, d, d);
-
+     void setup() {
+         size(innerWidth, 400);
+         f = createFont("Dialog.plain", 20);
+         textFont(f);
+         textAlign(CENTER, TOP);
+         state = 0;
+         background(255);
      }
-    }
-   }
 
+     void draw() {
+         elapsedTime = float(millis()) / 1000;
+         time = elapsedTime - timeStamp;
+         fill(0);
+         background(255);
+         switch (state) {
+         case 0:
+           text( "ミニゲーム開始まで" + int(start - time + 1), width / 2, 100);
+           if (time >= start) {
+             state = 1;
+             timeStamp = elapsedTime;
+             time = elapsedTime - timeStamp;
+           }
+           break;
+         case 1:
+           circle(50,250,150,0,50,200,2);
+           break;
+         case 2:
+           circle(50,50,150,250,0,100,3);
+           break;
+         case 3:
+           circle(50,50,0,0,100,100,4);
+           break;
+         case 4:
+          for (int i = 0; i < 100; i++){
+            float x = random(0,innerWidth/3);
+            float y = random(200,800);
+            float r = random(10,200);
+
+            noFill();
+            stroke(cr1,cg1,cb1);
+            ellipse(x, y, r, r);
+            stroke(cr2,cg2,cb2);
+            ellipse(x + innerWidth/3, y, r, r);
+            stroke(cr3,cg3,cb3);
+            ellipse(x + (innerWidth/3)*2, y, r, r);
+            stroke(cr1,cg1,cb1);
+          }
+           text("ログインは成功しました。下にスクロールしてください。", width / 2, 20);
+           text("もう一度挑戦する場合はEnterキーを押してください", width / 2, 80);
+           break;
+       }
+     }
+     void circle(int r1, int g1, int b1, int r2, int g2, int b2,int n){
+       background(255);
+       for (int i = 0; i < 100; i++){
+           float x = random(0,innerWidth/2);
+           float y = random(100,800);
+           noFill();
+
+           stroke(r1, g1, b1);
+             if(mouseX<innerWidth/2){
+               ellipse(x, y, 100, 100);
+             }else{
+               ellipse(x, y, 20, 20);
+             }
+
+           stroke(r2, g2, b2);
+             if(mouseX>innerWidth/2){
+               ellipse(x + innerWidth/2, y, 100, 100);
+             }else{
+               ellipse(x + innerWidth/2, y, 20, 20);
+             }
+       }
+       text("好きな色をクリックしてください。残り" + int(push - time + 1)  + "秒", width / 2, 20);
+       if (time >= push) {
+         state = n;
+         timeStamp = elapsedTime;
+         time = elapsedTime - timeStamp;
+       }
+     }
+     void mouseReleased() {
+         float d = random(50,150);
+         if (mouseX < innerWidth/2 && state == 1) {
+           cr1=50;
+           cg1=250;
+           cb1=150;
+         }else if(mouseX > innerWidth/2 && state == 1){
+           cr1=0;
+           cg1=50;
+           cb1=200;
+         }
+         if (mouseX < innerWidth/2 && state == 2) {
+           cr2=50;
+           cg2=50;
+           cb2=150;
+         }else if(mouseX > innerWidth/2 && state == 2){
+           cr2=250;
+           cg2=0;
+           cb2=100;
+         }
+         if (mouseX < innerWidth/2 && state == 3) {
+           cr3=50;
+           cg3=50;
+           cb3=0;
+         }else if(mouseX > innerWidth/2 && state == 3){
+           cr3=0;
+           cg3=100;
+           cb3=100;
+         }
+     }
+     void keyPressed() {
+         if (key == ENTER && state == 4) {
+             state = 0;
+             timeStamp = elapsedTime;
+             time = elapsedTime - timeStamp;
+             cr1 = 255;
+             cg1 = 127;
+             cb1 = 255;
+             cr2 = 127;
+             cg2 = 255;
+             cb2 = 127;
+             cr3 = 255;
+             cg3 = 255;
+             cb3 = 127;
+         }
+     }
   </script>
   <canvas id="canvas"></canvas>
-
 </body>
-
-
-
 </html>
