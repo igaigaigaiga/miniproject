@@ -1,5 +1,5 @@
 const target = ['person','umbrella','handbag','backpack','bottle','cup','laptop','keyboard','book','airplane'];
-const target2 = ['person','cup','book'];
+const target2 = ['person','bottle','book'];
 var random_target = target2[Math.floor(Math.random()*target2.length)];
 console.log(random_target);
 
